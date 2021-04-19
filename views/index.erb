@@ -1,11 +1,14 @@
 <ul>
-  <% @recipes.each do |recipe| %>
+  <% @recipes.each_with_index do |recipe, index| %>
     <li>
       <%= "#{recipe.done? ? '[x]' : '[ ]'} #{recipe.name} (#{recipe.rating} / 5)
       \n#{recipe.description}
       \nPrep time: #{recipe.prep_time} minutes" %>
+      <a href="/destroy/<%= index %>">Delete</a>
+      <a href="/done/<%= index %>">Mark as done</a>
     </li>
   <% end %>
 </ul>
 <br>
 <a href="/new">Add new recipe</a>
+<a href="/import">Import recipe</a>

@@ -1,0 +1,8 @@
+  <h1>Choose recipe:</h1>
+  <ol>
+    <% @names.each_with_index do |name, index| %>
+      <li>
+        <a href="import_recipe/<%= index %>"><%= name %></a>
+      </li>
+    <% end %>
+  </ol>
