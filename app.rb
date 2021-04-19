@@ -44,14 +44,15 @@ get '/import' do
 end
 
 post '/choose_recipe' do
-  ingredient = params[:ingredient]
-  scrape = ScrapeAllRecipesService.new(ingredient)
+  @ingredient = params[:ingredient]
+  scrape = ScrapeAllRecipesService.new(@ingredient)
   @names = scrape.call
   erb :choose_recipe
 end
 
-get 'import_recipe/:id' do
+get '/import_recipe/:id&:ingredient' do
   index = params["id"].to_i
+  scrape = ScrapeAllRecipesService.new(params["ingredient"])
   prep_time = scrape.prep_time(index)
   recipe = Recipe.new(scrape.call[index], scrape.descriptions[index], scrape.ratings[index], prep_time)
   cookbook.add_recipe(recipe)

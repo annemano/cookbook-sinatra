@@ -2,7 +2,7 @@
   <ol>
     <% @names.each_with_index do |name, index| %>
       <li>
-        <a href="import_recipe/<%= index %>"><%= name %></a>
+        <a href="import_recipe/<%= index %>&<%= @ingredient %>"><%= name %></a>
       </li>
     <% end %>
   </ol>
