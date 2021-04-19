@@ -1,11 +1,16 @@
-<h1> Welcome to my cookbook!</h1>
+<h1> Welcome to my cookbook! 🍜</h1>
 <br>
 <div class="list-group">
   <% @recipes.each_with_index do |recipe, index| %>
     <a href="#" class="list-group-item list-group-item-action" aria-current="true">
       <div class="d-flex w-100 justify-content-between">
         <h5 class="mb-1">
-          <%= "#{recipe.done? ? '[x]' : '[ ]'} #{recipe.name}" %>
+          <% if recipe.done? %>
+            <i class="far fa-check-square"></i>
+          <% else %>
+            <i class="far fa-square"></i>
+          <% end %>
+          <%= recipe.name %>
         </h5>
         <small><%= "#{recipe.rating} / 5" %></small>
       </div>

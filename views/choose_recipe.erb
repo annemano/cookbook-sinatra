@@ -1,8 +1,9 @@
-  <h1>Choose recipe:</h1>
-  <ol>
+  <h1>Choose recipe to import:</h1>
+  <br>
+  <div class="list-group">
     <% @names.each_with_index do |name, index| %>
-      <li>
-        <a href="import_recipe/<%= index %>&<%= @ingredient %>"><%= name %></a>
-      </li>
+      <a href="import_recipe/<%= index %>&<%= @ingredient %>" class="list-group-item list-group-item-action">
+        <%= name %>
+      </a>
     <% end %>
-  </ol>
+  </div>
