@@ -1,0 +1,11 @@
+<ul>
+  <% @recipes.each do |recipe| %>
+    <li>
+      <%= "#{recipe.done? ? '[x]' : '[ ]'} #{recipe.name} (#{recipe.rating} / 5)
+      \n#{recipe.description}
+      \nPrep time: #{recipe.prep_time} minutes" %>
+    </li>
+  <% end %>
+</ul>
+<br>
+<a href="/new">Add new recipe</a>
