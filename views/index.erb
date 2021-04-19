@@ -1,14 +1,29 @@
-<ul>
-  <% @recipes.each_with_index do |recipe, index| %>
-    <li>
-      <%= "#{recipe.done? ? '[x]' : '[ ]'} #{recipe.name} (#{recipe.rating} / 5)
-      \n#{recipe.description}
-      \nPrep time: #{recipe.prep_time} minutes" %>
-      <a href="/destroy/<%= index %>">Delete</a>
-      <a href="/done/<%= index %>">Mark as done</a>
-    </li>
-  <% end %>
-</ul>
+<h1> Welcome to my cookbook!</h1>
 <br>
-<a href="/new">Add new recipe</a>
-<a href="/import">Import recipe</a>
+<div class="list-group">
+  <% @recipes.each_with_index do |recipe, index| %>
+    <a href="#" class="list-group-item list-group-item-action" aria-current="true">
+      <div class="d-flex w-100 justify-content-between">
+        <h5 class="mb-1">
+          <%= "#{recipe.done? ? '[x]' : '[ ]'} #{recipe.name}" %>
+        </h5>
+        <small><%= "#{recipe.rating} / 5" %></small>
+      </div>
+      <p class="mb-1"><%= recipe.description %></p>
+      <small>
+        <%= "Prep time: #{recipe.prep_time} minutes" %>
+      </small>
+    </a>
+    <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+      <a href="/destroy/<%= index %>"><button type="button" class="btn btn-outline-danger btn-sm">Delete</button></a>
+      <a href="/done/<%= index %>"><button type="button" class="btn btn-outline-primary btn-sm">Mark as done</button></a>
+    </div>
+    <br>
+  <% end %>
+</div>
+
+
+
+<a href="/new"><button type="button" class="btn btn-secondary"><i class="fas fa-plus"></i> Add new recipe</button></a>
+<a href="/import"><button type="button" class="btn btn-secondary"><i class="fas fa-file-import"></i> Import recipe</button></a>
+
